@@ -442,7 +442,7 @@ void errorwidget::infoDialogShow(QTreeWidgetItem* item, int column)
             {
                 if(item->parent() != 0 && !item->text(0).contains("Channel"))
                 {
-                    videoCard = item->parent()->text(0);
+                    videoCard = item->text(0);
                     ipAdd = item->parent()->text(0);
 
                     int _find = 0;
@@ -459,8 +459,10 @@ void errorwidget::infoDialogShow(QTreeWidgetItem* item, int column)
                                     _find = 1;
                                     messageList = elementList.at(i).cardList.at(j).vMessageList;
                                 }
+                                j++;
                             }
                         }
+                        i++;
                     }
                 }
                 else
