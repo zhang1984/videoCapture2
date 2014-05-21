@@ -1,0 +1,255 @@
+#include "filecontrol.h"
+#include <GUI/Dialog/streamiddialog.h>
+
+filecontrol::filecontrol()
+{
+    configFile = new QFile();
+    statusFile = new QFile();
+    logFile = new QFile();
+    uberecorderFile = new QFile();
+    videoChannelFile = new QFile();
+    orderFile = new QFile();
+}
+
+filecontrol::filecontrol(QString ipAdd)
+{
+    this->ipAdd = ipAdd;
+    configFile = new QFile();
+    statusFile = new QFile();
+    logFile = new QFile();
+    uberecorderFile = new QFile();
+    videoChannelFile = new QFile();
+    orderFile = new QFile();
+#ifdef _WIN32_
+    serverID = ipAdd.split(".").at(3);
+#elif linux
+    streamiddialog* dialog = new streamiddialog();
+    dialog->dialog->show();
+    serverID = dialog->id;
+#endif
+}
+
+int filecontrol::setFile(QString ipAdd)
+{
+    this->ipAdd = ipAdd;
+    if(configFile->isOpen())
+        configFile->close();
+    if(statusFile->isOpen())
+        statusFile->close();
+    if(logFile->isOpen())
+        logFile->close();
+    if(uberecorderFile->isOpen())
+        uberecorderFile->close();
+    if(videoChannelFile->isOpen())
+        videoChannelFile->close();
+    if(orderFile->isOpen())
+        orderFile->close();
+#ifdef _WIN32_
+    configFile->setFileName(QString("%1%2%3").arg("\\\\", this->ipAdd, "/ubecontrol/config.xml"));
+    statusFile->setFileName(QString("%1%2%3").arg("\\\\", this->ipAdd, "/ubecontrol/status.xml"));
+    videoChannelFile->setFileName(QString("%1%2%3").arg("\\\\", this->ipAdd, "/etc/vc_new.conf"));
+    uberecorderFile->setFileName(QString("%1%2%3").arg("\\\\", this->ipAdd, "/etc/uberecorder.conf"));
+    logFile->setFileName(QString("%1%2%3").arg("\\\\", this->ipAdd, "/log/dvs_sdi.log"));
+    orderFile->setFileName(QString("%1%2%3").arg("\\\\", this->ipAdd, "/ubecontrol/order.xml"));
+    serverID = ipAdd.split(".").at(3);
+#elif linux
+    if(QString::compare("local", this->ipAdd, Qt::CaseInsensitive) == 0)
+    {
+        configFile->setFileName("/usr/local/ubecontrol/config.xml");
+        statusFile->setFileName("/usr/local/ubecontrol/status.xml");
+        videoChannelFile->setFileName("/usr/local/etc/vc_new.conf");
+        uberecorderFile->setFileName("/usr/local/etc/uberecorder.conf");
+        logFile->setFileName("/Storage/log/dvs_sdi.log");
+        orderFile->setFileName("/usr/local/ubecontrol/order.xml");
+        streamiddialog* dialog = new streamiddialog();
+        dialog->dialog->show();
+        serverID = dialog->id;
+    }
+#endif
+    return 0;
+}
+
+QList< int> filecontrol::isServer()
+{
+    QList< int> _return;
+#ifdef _WIN32_
+    if(QDir(QString("%1%2%3").arg("\\\\", this->ipAdd, "/ubecontrol/")).exists() &&
+            QDir(QString("%1%2%3").arg("\\\\", this->ipAdd, "/etc/")).exists()
+            QDir(QString("%1%2%3").arg("\\\\", this->ipAdd, "/log/")).exists())
+#elif linux
+    if(QDir("/usr/local/ubecontrol/").exists() && QDir("/usr/local/etc/").exists() && QDir("/Storage/log/").exists())
+#endif
+    {
+        if(!configFile->exists())
+            _return.append(0);
+        else
+            _return.append(1);
+        if(!statusFile->exists())
+            _return.append(0);
+        else
+            _return.append(1);
+        if(!videoChannelFile->exists())
+            _return.append(0);
+        else
+            _return.append(1);
+        if(!uberecorderFile->exists())
+            _return.append(0);
+        else
+            _return.append(1);
+        if(!logFile->exists())
+            _return.append(0);
+        else
+            _return.append(1);
+    }
+    else _return.append(-1);
+    return _return;
+}
+
+serverType filecontrol::readConfigFile()
+{
+    QString projectName;
+    serverType _serverType;
+    configFile->open(QFile::ReadOnly);
+    QString errorStr;
+    int errorLine;
+    QDomDocument doc;
+    QDomElement root;
+    QDomNode streamChild;
+    QDomNode formatChild;
+    doc.setContent(configFile, false, &errorStr, &errorLine, &errorColumn);
+    root = doc.documentElement();
+    streamChild = root.firstChild();
+    while(!streamChild.isNull())
+    {
+        if(streamChild.toElement().tagName() == "stream")
+        {
+            projectName = streamChild.toElement().attribute("project_name");
+            _serverType.projectName = projectName;
+            _serverType.ipAdd = ipAdd;
+            _serverType.serverName = serverName;
+            stream
+        }
+    }
+}
+
+int filecontrol::readLogFile()
+{
+
+}
+
+int filecontrol::readUberecorderFile()
+{
+    uberecorderFile->open(QFile::ReadOnly);
+    QString line;
+    while(!uberecorderFile->atEnd())
+    {
+        line = uberecorderFile->readLine();
+        if(line.contains("name"))
+        {
+            serverName = line.split("\"").at(1);
+        }
+    }
+    uberecorderFile->close();
+    return 0;
+}
+
+QList< cardtype> filecontrol::readVideoChannelFile()
+{
+    QList< cardtype> cardList;
+    videoChannelFile->open(QFile::ReadOnly);
+    QString line;
+    while(!videoChannelFile->atEnd())
+    {
+        line = videoChannelFile->readLine();
+        if(!line.contains("#"))
+        {
+            cardtype card;
+            QList< int> channelList;
+            QString _index = line.split(";").at(0);
+            _index = _index.remove("videocard");
+            card.index = _index.toInt();
+            //card.index = line.split(";").at(0).remove("videocard").toInt();
+            card.name = line.split(";").at(2);
+            for(int i = 0; i < line.split(";").at(1).split(" ").count(); i++)
+            {
+                channelList.append(line.split(";").at(1).split(" ").at(i).toInt());
+            }
+            cardList.append(card);
+        }
+    }
+    videoChannelFile->close();
+    return cardList;
+}
+
+int filecontrol::iniConfigFile()
+{
+    this->readUberecorderFile();
+    configFile->open(QFile::WriteOnly);
+    QString text;
+    text.append("<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n");
+    text.append("<capture>\n");
+    text.append("<version date_update=\"2013-08-23 12:22:00\" /\n>");
+    text.append(QString("<server id=\"%1\" name=\"%2\" ip=\"127.0.0.1\" />").arg(serverID, serverName));
+    text.append(QString("</capture>"));
+    QTextStream out(configFile);
+    out<<text;
+    configFile->close();
+    return 0;
+}
+
+int filecontrol::iniVideoChannelFile()
+{
+    cardtype card;
+    card.index = 0;
+    card.channelList.append(1);
+    card.channelList.append(2);
+    card.name = "videocard0";
+    QList< cardtype> cardList;
+    cardList.append(card);
+    this->writeVideoChannelFile(cardList);
+    return 0;
+}
+
+int filecontrol::writeVideoChannelFile(QList< cardtype> cardList)
+{
+    if(videoChannelFile->open(QFile::WriteOnly))
+    {
+        QTextStream out(configFile);
+        out<<";this file defined the videocard ID of channels\n"<<
+             ";\n"<<";videoCard channelNo\n";
+        for(int i = 0; i < cardList.count();i++)
+        {
+            out<<"videocard"<<cardList.at(i).index<<";";
+            for(int j = 0; j < cardList.at(i).channelList.count(); j++)
+            {
+                out<<cardList.at(i).channelList.at(i)<<" ";
+            }
+            out<<cardList.at(i).name<<"\n";
+        }
+        videoChannelFile->close();
+        return 1;
+    }
+    else
+        return 0;
+}
+
+int filecontrol::setOrderFile(int start)
+{
+    QString text;
+    text = "<?xml version='1.0' encoding='uft-8'?>\n";
+    text.append("<order\n>");
+    if(start == 1)
+    {
+        text.append("<Start>all</Start>\n");
+    }
+    else
+    {
+        text.append("<Stop>all</Stop>\n");
+    }
+    text.append("</order>\n");
+    orderFile->open(QFile::WriteOnly);
+    QTextStream out(orderFile);
+    out<<text;
+    orderFile->close();
+    return 0;
+}

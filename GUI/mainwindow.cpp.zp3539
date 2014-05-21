@@ -1,0 +1,569 @@
+#include "mainwindow.h"
+
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+{
+    menuBar = new menubar();
+    this->setMenuBar(menuBar->menuBar);
+    treeWidget = new treewidget();
+    centralWidget = new centralwidget();
+    errorWidget = new errorwidget();
+    _fctrl = new filecontrol();
+    QWidget* widget = new QWidget();
+    QGridLayout* layout = new QGridLayout;
+    layout->addWidget(treeWidget->projectWidget,0,0,1,1);
+    layout->addWidget(centralWidget->centralWidget,0,1,1,2);
+    layout->addWidget(errorWidget->errorWidget,0,3,1,1);
+    widget->setLayout(layout);
+    this->setCentralWidget(widget);
+    this->setWindowTitle("Capture Control");
+    this->setWindowIcon(QIcon(":resource/logo.png"));
+
+    setConnect();
+}
+
+void MainWindow::setConnect()
+{
+    connect(menuBar->openAct, SIGNAL(triggered()), this, SLOT(openServerSlot()));
+    connect(menuBar->closeAct, SIGNAL(triggered()), this, SLOT(close()));
+    connect(menuBar->addAct, SIGNAL(triggered()), this, SLOT(addActSlot()));
+    connect(treeWidget->addButton, SIGNAL(clicked()), this, SLOT(addActSlot()));
+    connect(treeWidget->minusButton, SIGNAL(clicked()), this, SLOT(removeSlot()));
+    connect(treeWidget->refreshButton, SIGNAL(clicked()), this, SLOT(reloadSlot()));
+    connect(menuBar->serverEditAct, SIGNAL(triggered()), this, SLOT(serverEditActSlot()));
+    connect(menuBar->streamEditAct, SIGNAL(triggered()), this, SLOT(streamEditActSlot()));
+    connect(menuBar->formatEditAct, SIGNAL(triggered()), this, SLOT(formatEditActSlot()));
+    connect(this, SIGNAL(hasTree(bool)), this, SLOT(setAddActEnabled(bool)));
+    connect(this, SIGNAL(hasTree(bool)), this, SLOT(setTreeButtonsEnabled(bool)));
+}
+
+int MainWindow::addFormatToServerList(serverType _server, streamtype _stream, formatType _format)
+{
+    int streamIndex = -1;
+    int formatIndex = -1;
+    int serverIndex = -1;
+    int i = 0;
+    while(serverIndex == -1 && i < serverList.count())
+    {
+        if(serverList.at(i).ipAdd == _server.ipAdd)
+        {
+            serverIndex = i;
+            int j = 0;
+            while(streamIndex == -1 && j < serverList.at(i).streamList.count())
+            {
+                if(serverList.at(i).streamList.at(j).streamID == _stream.streamID)
+                {
+                    streamIndex = j;
+                    int k = 0;
+                    while(formatIndex == -1 && k < serverList.at(i).streamList.at(j).formatList.count())
+                    {
+                        if(serverList.at(i).streamList.at(j).formatList.at(k).codec == _format.codec)
+                        {
+                            formatIndex = k;
+                        }
+                        k++;
+                    }
+                }
+                j++;
+            }
+        }
+        i++;
+    }
+    if(formatIndex != -1)
+    {
+        return 0;
+    }
+    else
+    {
+        if(streamIndex == -1)
+        {
+            _stream.formatList.append(_format);
+            this->serverList[serverIndex].streamList.append(_stream);
+            return 1;
+        }
+        else
+        {
+            this->serverList[serverIndex].streamList[streamIndex].formatList.append(_format);
+            return 2;
+        }
+    }
+}
+
+int MainWindow::removeFormat(QString _server, QString _card, int channel, int stream, QString codec)
+{
+    _fctrl->setFile(_server, 1);
+    _fctrl->removeFormat(_server, QString("%1").arg(channel), QString("%1").arg(stream), codec);
+    treeWidget->removeFormatItem(_server, _card, channel, stream, codec);
+    if(treeWidget->tWidget->topLevelItemCount() == 0)
+    {
+        emit hasTree(false);
+    }
+    else emit hasTree(true);
+    int _find = 0;
+    int i = 0;
+    int serverIndex = -1;
+    int streamIndex = -1;
+    int formatIndex = -1;
+    while(!_find && i < serverList.count())
+    {
+        if(serverList.at(i).ipAdd == _server)
+        {
+            serverIndex = i;
+            int j = 0;
+            while(!_find && j < serverList.at(i).streamList.count())
+            {
+                if(serverList.at(i).streamList.at(j).streamID == stream)
+                {
+                    streamIndex = j;
+                    int k = 0;
+                    while(!_find && k < serverList.at(i).streamList.at(j).formatList.count())
+                    {
+                        if(serverList.at(i).streamList.at(j).formatList.at(k).codec == codec)
+                        {
+                            formatIndex = k;
+                            _find = 1;
+                        }
+                        k++;
+                    }
+                }
+                j++;
+            }
+        }
+        i++;
+    }
+    serverList[serverIndex].streamList[streamIndex].formatList.removeAt(formatIndex);
+    if(serverList.at(serverIndex).streamList[streamIndex].formatList.count() == 0)
+    {
+        serverList[serverIndex].streamList.removeAt(streamIndex);
+        if(serverList.at(serverIndex).streamList.count() == 0)
+        {
+            serverList.removeAt(serverIndex);
+        }
+    }
+
+    return 0;
+}
+int MainWindow::removeStream(QString _server, QString _card, int channel, int stream)
+{
+    _fctrl->setFile(_server, 1);
+    _fctrl->removeStream(_server, QString("%1").arg(channel), QString("%1").arg(stream));
+    treeWidget->removeStreamItem(_server, _card, channel, stream);
+    if(treeWidget->tWidget->topLevelItemCount() == 0)
+    {
+        emit hasTree(false);
+    }
+    else emit hasTree(true);
+    int _find = 0;
+    int i = 0;
+    int serverIndex = -1;
+    int streamIndex = -1;
+    while(!_find && i < serverList.count())
+    {
+        if(serverList.at(i).ipAdd == _server)
+        {
+            int j = 0;
+            serverIndex = i;
+            while(!_find && j < serverList.at(i).streamList.count())
+            {
+                if(serverList.at(i).streamList.at(j).streamID == stream)
+                {
+                    _find = 1;
+                    streamIndex = 1;
+                }
+            }
+        }
+    }
+    serverList[serverIndex].streamList.removeAt(streamIndex);
+    if(serverList[serverIndex].streamList.count() == 0)
+    {
+        serverList.removeAt(serverIndex);
+    }
+    return 0;
+}
+int MainWindow::removeChannel(QString _server, QString _card, int channel)
+{
+    _fctrl->setFile(_server, 1);
+    _fctrl->removeChannel(_server, QString("%1").arg(channel));
+    treeWidget->removeChannelItem(_server, _card, channel);
+    if(treeWidget->tWidget->topLevelItemCount() == 0)
+    {
+        emit hasTree(false);
+    }
+    else emit hasTree(true);
+    for(int i = 0; i < serverList.count(); i++)
+    {
+        if(serverList.at(i).ipAdd == _server)
+        {
+            for(int j = 0; j < serverList.at(i).streamList.count(); j++)
+            {
+                if(serverList.at(i).streamList.at(j).channel == channel)
+                {
+                    serverList[i].streamList.removeAt(j);
+                }
+            }
+        }
+        if(serverList[i].streamList.count() == 0)
+        {
+            serverList.removeAt(i);
+            i = i - 1;
+        }
+    }
+    return 0;
+}
+int MainWindow::removeCard(QString _server, QString _card)
+{
+    _fctrl->setFile(_server, 1);
+    QList<cardtype> cardList = _fctrl->readVideoChannelFile();
+    for(int i = 0; i < cardList.count(); i++)
+    {
+        for(int j = 0; j < cardList.at(i).channelList.count(); j++)
+        {
+            _fctrl->removeChannel(_server, QString("%1").arg(cardList.at(i).channelList.at(j)));
+        }
+    }
+    treeWidget->removeCardItem(_server, _card);
+    if(treeWidget->tWidget->topLevelItemCount() == 0)
+    {
+        emit hasTree(false);
+    }
+    else emit hasTree(true);
+    QList<int> channelList;
+    for(int i = 0; i < cardList.count(); i++)
+    {
+        for(int j = 0; j < cardList.at(i).channelList.count(); j++)
+        {
+            channelList.append(cardList.at(i).channelList.at(j));
+        }
+    }
+    for(int i = 0; i < serverList.count(); i++)
+    {
+        for(int j = 0; j < serverList.at(i).streamList.count(); j++)
+        {
+            if(channelList.contains(serverList.at(i).streamList.at(j).channel))
+            {
+                serverList[i].streamList.removeAt(j);
+                j--;
+            }
+        }
+        if(serverList.at(i).streamList.count() == 0)
+        {
+            serverList.removeAt(i);
+            i--;
+        }
+    }
+    return 0;
+}
+int MainWindow::removeServer(QString _server)
+{
+    treeWidget->removeServerItem(_server);
+    errorWidget->removeServer(_server);
+    if(treeWidget->tWidget->topLevelItemCount() == 0)
+    {
+        emit hasTree(false);
+    }
+    else emit hasTree(true);
+    int _find = 0;
+    int i = 0;
+    while(!_find && i < serverList.count())
+    {
+        if(serverList.at(i).ipAdd == _server)
+        {
+            _find = 1;
+            serverList.removeAt(i);
+        }
+        i++;
+    }
+    return 0;
+}
+
+/////////////////////////SLOTS////////////////////////////////////
+void MainWindow::openServerSlot()
+{
+    _openServerDialog = new openServerDialog();
+    connect(_openServerDialog->okButton, SIGNAL(clicked()), this, SLOT(addServerSlot()));
+    _openServerDialog->openServer->show();
+}
+
+void MainWindow::addActSlot()
+{
+    _addDialog = new addDialog();
+    _addDialog->setServerListSlot(serverList);
+    connect(_addDialog->okButton, SIGNAL(clicked()), this, SLOT(addStreamSlot()));
+    _addDialog->dialog->exec();
+}
+
+void MainWindow::serverEditActSlot()
+{
+    serverEditDialog* dialog = new serverEditDialog("local");
+    dialog->dialog->show();
+}
+
+void MainWindow::streamEditActSlot()
+{
+    streameditdialog* dialog = new streameditdialog("local", "StreamID");
+    dialog->dialog->show();
+}
+
+void MainWindow::formatEditActSlot()
+{
+    formateditdialog* dialog = new formateditdialog("local", "StreamID", "format");
+    dialog->dialog->show();
+}
+
+void MainWindow::addServerSlot()
+{
+    /////////////////////////////////////////////////////////////////////////////////////////
+    /////////////in addServerSlot() needs to do following things
+    ///1. get ipAdd
+    ///1. test files: config.xml, status.xml, dvs_sdi.log, uberecorder.conf
+    ///2. def: def the project name, server name, ipAdd in servertype, if config.xml is not exsit, set new config.xml in server
+    ///3. initial the servertype
+    ///4. read config.xml, set the servertype, add the sub-types in the type
+    ///5. add component items in treewidget, errorwidget
+    //////////////////////////////////////////////////////////////////////////////////////////
+#ifdef _WIN32_
+    if(!_openServerDialog->serverEdit->text().split(".").at(0).isEmpty)
+#elif linux
+    if(!_openServerDialog->serverEdit->text().isEmpty())
+#endif
+    {
+        QString ipAdd = _openServerDialog->serverEdit->text();
+        _fctrl->setFile(ipAdd);
+        //while(_fctrl->serverID.isEmpty()){};
+        QList< int> isServer = _fctrl->isServer();
+        if(isServer.count() == 1)
+        {
+            QMessageBox msg;
+            msg.setWindowIcon(QIcon(":resource/logo.png"));
+            msg.setWindowTitle(QString("Error"));
+            msg.setText("Error, can not connet to server");
+        }
+        if(isServer.contains(0))
+        {
+            QString text;
+            for(int i = 0; i < isServer.count(); i++)
+            {
+                if(isServer.at(i) == 0)
+                {
+                    if(i == 0)
+                    {
+                        text.append("Config file is not exists, initial a new config file.\n");
+                        _fctrl->iniConfigFile();
+                    }
+                    if(i == 1)
+                        text.append("Status file is not exists, please connect to the support.\n");
+                    if(i == 2)
+                    {
+                        text.append("vc.conf does not find, initial a new video card config file with only one video card.\n");
+                        _fctrl->iniVideoChannelFile();
+                    }
+                    if(i == 3)
+                    {
+                        text.append("uberecorder.conf does not find, can not get the server name.\n");
+                    }
+                    if(i == 4)
+                    {
+                        text.append("dvs_sdi.log does not find, can not update the error.\n");
+                    }
+                }
+            }
+            QMessageBox msg;
+            msg.setWindowIcon(QIcon(":resource/logo.png"));
+            msg.setWindowTitle(QString("Error"));
+            msg.setText(text);
+        }
+        serverType server = _fctrl->readConfigFile();
+        int _isFind = 0;
+        int i = 0;
+        while(!_isFind && i < serverList.count())
+        {
+            if(serverList.at(i).ipAdd == server.ipAdd)
+            {
+                _isFind = 1;
+            }
+            i++;
+        }
+        if(!_isFind)
+        {
+            treeWidget->addServerItem(server);
+            errorWidget->addTreeItem(server);
+            serverList.append(server);
+        }
+
+        emit _openServerDialog->cancelButton->clicked();
+        if(treeWidget->tWidget->topLevelItemCount() > 0)
+        {
+            emit hasTree(true);
+        }
+        else
+        {
+            emit hasTree(false);
+        }
+    }
+}
+
+void MainWindow::setAddActEnabled(bool hasTree)
+{
+    menuBar->addAct->setEnabled(hasTree);
+    treeWidget->addButton->setEnabled(hasTree);
+    treeWidget->minusButton->setEnabled(hasTree);
+    treeWidget->refreshButton->setEnabled(hasTree);
+}
+
+void MainWindow::addStreamSlot()
+{
+    serverType _server;
+    _server.ipAdd = _addDialog->ipEdit->currentText();
+    _server.serverName = _addDialog->serverNameEdit->text();
+    _server.projectName = _addDialog->projectNameEdit->text();
+    streamtype _stream;
+    _stream.aspect = _addDialog->aspectEdit->currentText();
+    _stream.audioTrack = _addDialog->audioEdit->text().toInt();
+    _stream.channel = _addDialog->channelEdit->value();
+    _stream.enable = 1;
+    _stream.restart = 0;
+    _stream.split = _addDialog->splitEdit->value();
+    _stream.streamID = _addDialog->streamEdit->text().toInt();
+    _stream.thumb = _addDialog->thumEdit->isChecked();
+    _stream.thumPPS = _addDialog->thumPPSEdit->value();
+    formatType _format;
+    _format.archivPath = _addDialog->archivPathEdit->text();
+    _format.archivResultPath = _addDialog->archivResultEdit->text();
+    _format.codec = _addDialog->codecEdit->currentText();
+    _format.creatingPath = _addDialog->creatingpathEdit->text();
+    _format.fileName = _addDialog->fileNameEdit->text();
+    if(_addDialog->codecEdit->currentIndex() > 17)
+    {
+        _format.scale = _addDialog->scaleEdit->text();
+        _format.audioBit = _addDialog->audioBitEdit->text().toInt();
+        _format.videoBit = _addDialog->videoBitEdit->text().toInt();
+    }
+    _format.tapeName = _addDialog->tapeNameEdit->text();
+    _format.timeOverlay = 0;
+
+    int _add = this->addFormatToServerList(_server, _stream, _format);
+    if(_add == 0)
+    {
+        QMessageBox msg;
+        msg.setText("The codec has fund in the project");
+        msg.setWindowTitle("Add Error");
+        msg.setWindowIcon(QIcon(":resource/logo.png"));
+        msg.exec();
+    }
+    else
+    {
+        QString cardName;
+        int _find = 0;
+        for(int i = 0; i < serverList.count() && !_find; i++)
+        {
+            for(int j = 0; j < serverList.at(i).cardList.count() && !_find; j++)
+            {
+                for(int k = 0; k < serverList.at(i).cardList.at(j).channelList.count() && !_find; k++)
+                {
+                    if(serverList.at(i).cardList.at(j).channelList.at(k) == _stream.channel)
+                    {
+                        _find = 1;
+                        cardName = serverList.at(i).cardList.at(j).name;
+                    }
+                }
+            }
+        }
+        treeWidget->addFormatItem(_server, cardName, _stream, _format, _add);
+        errorWidget->addTreeItem(_server.ipAdd, cardName, _stream.channel, _stream.streamID);
+        _fctrl->writeFormattoXML(_server, _stream, _format);
+    }
+    emit _addDialog->cancelButton->clicked();
+}
+
+
+void MainWindow::removeSlot()
+{
+    QTreeWidgetItem* item = new QTreeWidgetItem();
+    item = treeWidget->tWidget->currentItem();
+    if(item->text(1) == "Format")
+    {
+        QString codec = item->text(2);
+        int streamID = item->parent()->text(2).toInt();
+        int channelID = item->parent()->parent()->text(2).toInt();
+        QString card = item->parent()->parent()->parent()->text(2);
+        QString ipAdd = item->parent()->parent()->parent()->parent()->text(0);
+        this->removeFormat(ipAdd, card, channelID, streamID, codec);
+    }
+    else
+    {
+        if(item->text(1) == "Stream")
+        {
+            int streamID = item->text(2).toInt();
+            int channelID = item->parent()->text(2).toInt();
+            QString card = item->parent()->parent()->text(2);
+            QString ipAdd = item->parent()->parent()->parent()->text(0);
+            this->removeStream(ipAdd, card, channelID, streamID);
+        }
+        else
+        {
+            if(item->text(1) == "Channel")
+            {
+                int channelID = item->text(2).toInt();
+                QString card = item->parent()->text(2);
+                QString ipAdd = item->parent()->parent()->text(0);
+                this->removeChannel(ipAdd, card, channelID);
+            }
+            else
+            {
+                if(item->text(1) == "Video Card")
+                {
+                    QString card = item->text(2);
+                    QString ipAdd = item->parent()->text(0);
+                    this->removeCard(ipAdd, card);
+                }
+                else
+                {
+#ifdef _WIN32_
+                    if(item->text(0).split(".") == 4)
+#elif linux
+                    if(item->text(0) == "Local")
+#endif
+                    {
+                        QString ipAdd = item->text(0);
+                        this->removeServer(ipAdd);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+void MainWindow::setTreeButtonsEnabled(bool hasTree)
+{
+    treeWidget->addButton->setEnabled(hasTree);
+    treeWidget->minusButton->setEnabled(hasTree);
+    treeWidget->refreshButton->setEnabled(hasTree);
+}
+
+void MainWindow::reloadSlot()
+{
+    treeWidget->reloadTree(serverList);
+    if(treeWidget->tWidget->topLevelItemCount()> 0)
+        emit hasTree(true);
+    else
+        emit hasTree(false);
+}
+
+void MainWindow::treeItemDoubleClickedSlot()
+{
+    QStringList list = treeWidget->getCurrentItemInfo();
+    int _find = 0;
+    if(list.count() == 5)
+    {
+        serverType _server;
+        streamtype _stream;
+        formatType _format;
+        while(!_find)
+    }
+}
+
+MainWindow::~MainWindow()
+{
+
+}

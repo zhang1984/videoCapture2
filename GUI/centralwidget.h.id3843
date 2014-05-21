@@ -1,0 +1,23 @@
+#ifndef CENTRALWIDGET_H
+#define CENTRALWIDGET_H
+
+#include <QWidget>
+#include <QTableView>
+#include <Q
+
+class centralwidget : public QWidget
+{
+    Q_OBJECT
+public:
+    explicit centralwidget(QWidget *parent = 0);
+    void createTimeWidget();
+    void createAttrWidget();
+
+
+signals:
+
+public slots:
+
+};
+
+#endif // CENTRALWIDGET_H
