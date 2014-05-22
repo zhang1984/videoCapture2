@@ -30,9 +30,10 @@ messageType::messageType(QString line)
             device = device.remove(":");
         }
         message = line.remove(lineList.at(0));
-        qDebug()<<message;
-        message = message.remove(lineList.at(1));
-        qDebug()<<message;
+        message = message.remove(0, 1);
+        QString t = message.split(" ").at(0);
+        message = message.remove(t);
+        message = message.remove(0, 1);
         if(!device.isEmpty())
         {
             QString device_s = device + ":";
