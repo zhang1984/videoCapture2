@@ -36,7 +36,8 @@ SOURCES += main.cpp\
     GUI/ipelement.cpp \
     GUI/cardelement.cpp \
     GUI/channelelement.cpp \
-    thread/messageupdate.cpp
+    thread/messageupdate.cpp \
+    thread/timeupdate.cpp
 
 HEADERS  += GUI/mainwindow.h \
     GUI/menubar.h \
@@ -59,7 +60,8 @@ HEADERS  += GUI/mainwindow.h \
     GUI/ipelement.h \
     GUI/cardelement.h \
     GUI/channelelement.h \
-    thread/messageupdate.h
+    thread/messageupdate.h \
+    thread/timeupdate.h
 
 RESOURCES += \
     resource.qrc
