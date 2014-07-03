@@ -13,8 +13,6 @@ public:
     explicit messageUpdate();
     messageUpdate(QList<ipElement> elementList, QObject *parent = 0);
 
-
-
     QList<ipElement> elementList;
     QList<qint64> logPosList;
 

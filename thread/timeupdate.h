@@ -19,6 +19,9 @@ public:
     QString duration_s;
     QString lastSplit_s;
     QString nextSplit_s;
+
+//    void read
+
 signals:
 
 public slots:

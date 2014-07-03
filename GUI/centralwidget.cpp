@@ -31,6 +31,8 @@ centralwidget::centralwidget(QWidget *parent) :
     //widget->setLayout(layout);
     centralWidget = new QWidget();
     centralWidget->setLayout(layout);
+    _timeUpdate = new timeUpdate();
+    _fileControl = new filecontrol();
 }
 
 void centralwidget::createTimeWidget()
@@ -232,4 +234,29 @@ void centralwidget::setData(serverType _server)
     ipEdit->setText(_server.ipAdd);
     serverNameEdit->setText(_server.serverName);
     projectNameEdit->setText(_server.projectName);
+}
+
+int centralwidget::setFileControl(QString ipAdd)
+{
+    _fileControl->ipAdd = ipAdd;
+    if(_fileControl->statusFile->exists())
+    {
+        if(_fileControl->statusFile->isOpen())
+        {
+            _fileControl->statusFile->close();
+        }
+        if(!_fileControl->statusFile->isOpen())
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+void centralwidget::updateTime()
+{
+    if(_fileControl->statusFile->isOpen())
+        _fileControl->statusFile->close();
+    _fileControl->statusFile->open(QFile::ReadOnly);
+
 }

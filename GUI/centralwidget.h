@@ -16,6 +16,8 @@
 #include <QHeaderView>
 #include <QScrollBar>
 #include <config/servertype.h>
+#include <thread/timeupdate.h>
+#include <config/filecontrol.h>
 
 
 class centralwidget : public QWidget
@@ -53,6 +55,8 @@ public:
     QLineEdit* scaleEdit;
     QLineEdit* videoBitEdit;
     QLineEdit* audioBitEdit;
+    timeUpdate* _timeUpdate;
+    filecontrol* _fileControl;
 
 
     void createTimeWidget();
@@ -62,9 +66,11 @@ public:
     void setData(serverType _server, streamtype _stream);
     void setData(serverType _server, streamtype _stream, formatType _format);
 
+    int setFileControl(QString ipAdd);
 signals:
 
 public slots:
+    void updateTime();
 
 };
 

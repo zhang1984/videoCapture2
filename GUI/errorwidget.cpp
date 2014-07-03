@@ -1,17 +1,4 @@
 #include "errorwidget.h"
-/*class updateThread : public QObject
-{
-    Q_OBJECT
-public:
-    //updateThread(){};
-    //~updateThread(){};
-public slots:
-    void tableUpDateSlot()
-    {
-        //widget->updateTable();
-    }
-};
-*/
 
 errorwidget::errorwidget(QWidget *parent) :
     QWidget(parent)

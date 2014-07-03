@@ -268,7 +268,6 @@ QList< cardtype> filecontrol::readVideoChannelFile()
     }
     videoChannelFile->close();
     return cardList;
-
 }
 
 QList< cardtype> filecontrol::readVideoChannelFile(QString ipAdd)
