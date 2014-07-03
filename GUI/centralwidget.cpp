@@ -255,8 +255,64 @@ int centralwidget::setFileControl(QString ipAdd)
 
 void centralwidget::updateTime()
 {
-    if(_fileControl->statusFile->isOpen())
-        _fileControl->statusFile->close();
-    _fileControl->statusFile->open(QFile::ReadOnly);
-
+    std::tuple<QTime, int> timeValue;
+    timeValue = _fileControl->getCurrentTime(streamEdit->text(), channelEdit->text(), codecEdit->currentText());
+    QTime currentTime = std::get<0>(timeValue);
+    int splitMinute = std::get<1>(timeValue);
+    if(splitMinute == -1)
+    {
+        currentTimeDisplay->display(0);
+        durationDisplay->display(0);
+        lastSplitDisplay->display(0);
+        nextSplitDisplay->display(0);
+    }
+    else
+    {
+        if(splitMinute != -1024 && (currentTime.hour() + currentTime.minute() + currentTime.second() != 0))
+        {
+            QTime lastTime = QTime(0,0,0,0);
+            QTime nextTime = QTime(0,0,0,0);
+            int currentTimeMinute = currentTime.hour()*60 + currentTime.minute();
+            if(splitMinute != 0)
+            {
+                int lastTimeMinute = currentTimeMinute / splitMinute * splitMinute;
+                int nextTimeMinute = currentTimeMinute / splitMinute * splitMinute + splitMinute;
+                lastTime = lastTime.addSecs(lastTimeMinute * 60);
+                nextTime = nextTime.addSecs(nextTimeMinute * 60);
+                int duration = lastTime.secsTo(currentTime);
+                QTime durationTime = QTime(0,0,0,0).addSecs(duration);
+                QString currentFrame;
+                if(currentTime.msec() < 10)
+                    currentFrame = QString("0%1").arg(currentTime.msec());
+                else
+                    currentFrame = QString("%1").arg(currentTime.msec());
+                QString currentText = QString("%1%2").arg(currentTime.toString("hh:mm:ss "), currentFrame);
+                QString last_t = lastTime.toString("hh:mm:ss");
+                QString next_t = nextTime.toString("hh:mm:ss");
+                QString duration_t = QString("%1%2").arg(durationTime.toString("hh:mm:ss "), currentFrame);
+                currentTimeDisplay->display(currentText);
+                lastSplitDisplay->display(last_t);
+                nextSplitDisplay->display(next_t);
+                durationDisplay->display(duration_t);
+            }
+            else
+            {
+                int duration = lastTime.secsTo(currentTime);
+                QTime durationTime = QTime(0,0,0,0).addSecs(duration);
+                QString currentFrame;
+                if(currentTime.msec() < 10)
+                    currentFrame = QString("0%1").arg(currentTime.msec());
+                else
+                    currentFrame = QString("%1").arg(currentTime.msec());
+                QString currentText = QString("%1%2").arg(currentTime.toString("hh:mm:ss "), currentFrame);
+                QString last_t = lastTime.toString("hh:mm:ss");
+                QString next_t = nextTime.toString("hh:mm:ss");
+                QString duration_t = QString("%1%2").arg(durationTime.toString("hh:mm:ss "), currentFrame);
+                currentTimeDisplay->display(currentText);
+                lastSplitDisplay->display(last_t);
+                nextSplitDisplay->display(next_t);
+                durationDisplay->display(duration_t);
+            }
+        }
+    }
 }

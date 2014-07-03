@@ -66,3 +66,4 @@ HEADERS  += GUI/mainwindow.h \
 RESOURCES += \
     resource.qrc
 
+QMAKE_CXXFLAGS += -std=c++11

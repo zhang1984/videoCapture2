@@ -13,6 +13,8 @@
 #include <QDebug>
 #include <QDomDocument>
 #include <QTime>
+#include <tuple>
+
 class filecontrol
 {
 public:
@@ -58,7 +60,7 @@ public:
     int setProjectName(QString projectName);
     QString getVideoCard(QList<cardtype> cardList, int channel);
 
-    QTime getCurrentTime(QString stream, QString channel, QString resolution);
+    std::tuple<QTime, int> getCurrentTime(QString stream, QString channel, QString resolution);
 };
 
 #endif // FILECONTROL_H

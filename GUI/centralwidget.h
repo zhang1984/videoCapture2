@@ -18,7 +18,7 @@
 #include <config/servertype.h>
 #include <thread/timeupdate.h>
 #include <config/filecontrol.h>
-
+#include <tuple>
 
 class centralwidget : public QWidget
 {

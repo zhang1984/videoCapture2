@@ -311,7 +311,7 @@ void MainWindow::serverEditActSlot()
         QString ipAdd;
 #ifdef _WIN32_
         if(treeWidget->tWidget->currentItem()->text(0).split(".") == 4)
-#elif linux
+#elif __linux__
         if(treeWidget->tWidget->currentItem()->text(0) == "Local")
 #endif
         {

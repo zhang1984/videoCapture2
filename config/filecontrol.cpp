@@ -22,7 +22,7 @@ filecontrol::filecontrol(QString ipAdd)
     orderFile = new QFile();
 #ifdef _WIN32_
     serverID = ipAdd.split(".").at(3);
-#elif linux
+#elif __linux__
     streamiddialog* dialog = new streamiddialog();
     dialog->dialog->show();
     serverID = dialog->id;
@@ -52,7 +52,7 @@ int filecontrol::setFile(QString ipAdd, int noDialog)
     logFile->setFileName(QString("%1%2%3").arg("\\\\", this->ipAdd, "/log/dvs_sdi.log"));
     orderFile->setFileName(QString("%1%2%3").arg("\\\\", this->ipAdd, "/ubecontrol/order.xml"));
     serverID = ipAdd.split(".").at(3);
-#elif linux
+#elif __linux__
     if(QString::compare("local", this->ipAdd, Qt::CaseInsensitive) == 0)
     {
         configFile->setFileName("/usr/local/ubecontrol/config.xml");
@@ -79,7 +79,7 @@ QList< int> filecontrol::isServer()
     if(QDir(QString("%1%2%3").arg("\\\\", this->ipAdd, "/ubecontrol/")).exists() &&
             QDir(QString("%1%2%3").arg("\\\\", this->ipAdd, "/etc/")).exists()
             QDir(QString("%1%2%3").arg("\\\\", this->ipAdd, "/log/")).exists())
-#elif linux
+#elif __linux__
     if(QDir("/usr/local/ubecontrol/").exists() && QDir("/usr/local/etc/").exists() && QDir("/Storage/log/").exists())
 #endif
     {
@@ -191,7 +191,7 @@ QList<messageType> filecontrol::readLogFile(QString ipAdd, QList<messageType> me
     QFile* logFile = new QFile();
 #ifdef _WIN32
     logFile->setFileName(QString("%1%2%3").arg("\\\\", ipAdd, "/log/dvs_sdi.log"));
-#elif linux
+#elif __linux__
     logFile->setFileName("/Storage/log/dvs_sdi.log");
 #endif
     //////////////is this part nessary?
@@ -276,7 +276,7 @@ QList< cardtype> filecontrol::readVideoChannelFile(QString ipAdd)
     QFile* File = new QFile();
 #ifdef _WIN32
     File->setFileName(QString("%1%2%3").arg("\\\\", this->ipAdd, "/etc/vc_new.conf"));
-#elif linux
+#elif __linux__
     File->setFileName("/usr/local/etc/vc_new.conf");
 #endif
     if(File->isOpen())
@@ -890,7 +890,7 @@ QString filecontrol::getVideoCard(QList<cardtype> cardList, int channel)
     return videoCardName;
 }
 
-QString filecontrol::getCurrentTime(QString stream, QString channel, QString resolution)
+std::tuple<QTime, int> filecontrol::getCurrentTime(QString stream, QString channel, QString resolution)
 {
     QString currentString;
     QString errorStr;
@@ -903,6 +903,7 @@ QString filecontrol::getCurrentTime(QString stream, QString channel, QString res
     QDomNode formatChild;
     bool isFind = false;
     QTime currentTime = QTime(0,0,0,0);
+    int splitMinute = -1024;
     if(!statusFile->open(QFile::ReadOnly))
     {
         qDebug()<<"Status File open error.";
@@ -924,10 +925,14 @@ QString filecontrol::getCurrentTime(QString stream, QString channel, QString res
                             && streamChild.toElement().attribute("id") == stream)
                     {
                         formatChild = streamChild.firstChild();
-                        while(!formatChild.isNull() && isFind)
+                        while(!formatChild.isNull() && !isFind)
                         {
-                            currentString = formatChild.toElement().attribute("last_timecode");
-                            isFind = true;
+                            if(formatChild.toElement().tagName() == "format" && formatChild.toElement().attribute("resolution") == resolution)
+                            {
+                                currentString = formatChild.toElement().attribute("last_timecode");
+                                splitMinute = formatChild.toElement().attribute("split_minutes").toInt();
+                                isFind = true;
+                            }
                         }
                         formatChild = formatChild.nextSibling();
                     }
@@ -947,5 +952,7 @@ QString filecontrol::getCurrentTime(QString stream, QString channel, QString res
         currentTime = QTime(hour.toInt(), minute.toInt(), second.toInt(), msecond.toInt());
     }
     statusFile->close();
-    return currentTime;
+    std::tuple<QTime, int> return_s = std::make_tuple(currentTime, splitMinute);
+
+    return return_s;
 }
