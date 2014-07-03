@@ -12,6 +12,7 @@
 #include <QDir>
 #include <QDebug>
 #include <QDomDocument>
+#include <QTime>
 class filecontrol
 {
 public:
@@ -56,6 +57,8 @@ public:
     int setServerName(QString serverName);
     int setProjectName(QString projectName);
     QString getVideoCard(QList<cardtype> cardList, int channel);
+
+    QTime getCurrentTime(QString stream, QString channel, QString resolution);
 };
 
 #endif // FILECONTROL_H

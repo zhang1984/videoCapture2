@@ -889,3 +889,63 @@ QString filecontrol::getVideoCard(QList<cardtype> cardList, int channel)
     }
     return videoCardName;
 }
+
+QString filecontrol::getCurrentTime(QString stream, QString channel, QString resolution)
+{
+    QString currentString;
+    QString errorStr;
+    int errorLine;
+    int errorColumn;
+    QDomDocument doc;
+    QDomElement root;
+    QDomNode serverChild;
+    QDomNode streamChild;
+    QDomNode formatChild;
+    bool isFind = false;
+    QTime currentTime = QTime(0,0,0,0);
+    if(!statusFile->open(QFile::ReadOnly))
+    {
+        qDebug()<<"Status File open error.";
+    }
+    else
+    {
+        doc.setContent(statusFile, false, &errorStr, &errorLine, &errorColumn);
+        root = doc.documentElement();
+        serverChild = root.firstChild();
+        while(!serverChild.isNull() && !isFind)
+        {
+            if(serverChild.toElement().tagName() == "server")
+            {
+                streamChild = serverChild.firstChild();
+                while(!streamChild.isNull() && !isFind)
+                {
+                    if(streamChild.toElement().tagName() == "stream"
+                            && streamChild.toElement().attribute("channel") == channel
+                            && streamChild.toElement().attribute("id") == stream)
+                    {
+                        formatChild = streamChild.firstChild();
+                        while(!formatChild.isNull() && isFind)
+                        {
+                            currentString = formatChild.toElement().attribute("last_timecode");
+                            isFind = true;
+                        }
+                        formatChild = formatChild.nextSibling();
+                    }
+                }
+                streamChild = streamChild.nextSibling();
+            }
+        }
+        serverChild = serverChild.nextSibling();
+    }
+    if(isFind)
+    {
+        QStringList list = currentString.split(":");
+        QString hour = list.at(0);
+        QString minute = list.at(1);
+        QString second = list.at(2);
+        QString msecond = list.at(3);
+        currentTime = QTime(hour.toInt(), minute.toInt(), second.toInt(), msecond.toInt());
+    }
+    statusFile->close();
+    return currentTime;
+}
