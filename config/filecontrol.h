@@ -82,7 +82,8 @@ public:
     */
     QString serverID;
     /**
-    \brief logPos : the current read position of the dvs_sdi.log
+    \brief
+    \param logPos : the current read position of the dvs_sdi.log
     */
     qint64 logPos;
 
@@ -126,27 +127,103 @@ public:
     QList<messageType> readLogFile(QString ipAdd, QList<messageType> messageList, int pos = 0);
 
     /**
-    \brief
+    \brief read the uberecorder file, get the information about the server name
     */
     QString readUberecorderFile();
+
+    /**
+    \brief remove the format, if succeed, return 1, else return 0
+    \param ipAdd : ip address
+    \param channel : channel number
+    \param streamID : stream id number
+    \param format : format name
+    */
     int removeFormat(QString ipAdd, QString channel, QString streamID, QString format);
+
+    /**
+    \brief remove the stream, if removed, return 1, else return 0
+    \param ipAdd : ip address
+    \param channel : channel number
+    \param streamID : stream id number
+    */
     int removeStream(QString ipAdd, QString channel, QString streamID);
+
+    /**
+    \brief remove the channel, if removed, return 1, else return 0
+    \param ipAdd : ip address
+    \param channel : channel number
+    */
     int removeChannel(QString ipAdd, QString channel);
 
-    int writeVideoChannelFile(QList< cardtype>);
+    /**
+    \brief write the video channel file, if succeed, return 1, else return 0
+    \param cardType : the list of cardtype
+    */
+    int writeVideoChannelFile(QList< cardtype> cardTypeList);
+
+    /**
+    \brief write the format to config.xml, if succeed, return 1, else return 0
+    \param _server : the serverType of the server
+    \param _stream : the streamtype of the stream
+    \param _format : the formatType for the format
+    */
     int writeFormattoXML(serverType _server, streamtype _stream, formatType _format);
 
+    /**
+    \brief change the stream option in config.xml, if succeed, return 1, else return 0
+    \param preStream : the previous stream information
+    \param currentStream : the current stream information
+    */
     int streamEdittoXML(streamtype preStream, streamtype currentStream);
+
+    /**
+    \brief change the format option in config.xml, if succeed, return 1, else return 0
+    \param currentStream : the stream information
+    \param preFormat : the previous format information
+    \param currentFormat : the current format information
+    */
     int formatEdittoXML(streamtype currentStream, formatType preFormat, formatType currentFormat);
 
+    /**
+    \brief read the video channel file, and return the as the list of cardtype
+    */
     QList< cardtype> readVideoChannelFile();
+
+    /**
+    \brief read the video channel file, and return the as the list of cardtype
+    \param ipAdd : ip address
+    */
     QList< cardtype> readVideoChannelFile(QString ipAdd);
+
+    /**
+    \brief set the order.xml in the server, start or stop the server, return 1 succeed, else return 0
+    \param start : start / stop the capture, 1/0
+    */
     int setOrderFile(int start);
 
+    /**
+    \brief set the server name in the uberecorder file, if succeed, return 1, else return 0
+    \param serverName : the name of the server
+    */
     int setServerName(QString serverName);
-    int setProjectName(QString projectName);
-    QString getVideoCard(QList<cardtype> cardList, int channel);
 
+    /**
+    \brief set the project name, if succeed, return 1, else return 0
+    \param projectName : the name of the project
+    */
+    int setProjectName(QString projectName);
+    /**
+    \brief get the video card name of the channel
+    \param cardList : the list of cardtype
+    \param channel : the id of the channel
+    */
+    QString getVideoCard(QList<cardtype> cardList, int channel);
+    /**
+    \brief get the current time information from the status.xml, saved as a tuple, include current TC and split
+    \param stream : the stream of the capture
+    \param channel : the channel id
+    \param resolution : the resolution name of the format
+    */
     std::tuple<QTime, int> getCurrentTime(QString stream, QString channel, QString resolution);
 };
 

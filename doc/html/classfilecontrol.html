@@ -115,22 +115,37 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab0ec95cd198d80ff24edb7be117dfff8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#ab0ec95cd198d80ff24edb7be117dfff8">getStatus</a> ()</td></tr>
 <tr class="memdesc:ab0ec95cd198d80ff24edb7be117dfff8"><td class="mdescLeft">&#160;</td><td class="mdescRight">read the status file, return whether the capture is started (1) or stopped (0)  <a href="#ab0ec95cd198d80ff24edb7be117dfff8"></a><br/></td></tr>
 <tr class="memitem:aa03a638654959525628872cb12b5d238"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="classmessage_type.html">messageType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#aa03a638654959525628872cb12b5d238">readLogFile</a> (QString <a class="el" href="classfilecontrol.html#a01c0696ae36dd8c5e0a0b7c61e21e102">ipAdd</a>, QList&lt; <a class="el" href="classmessage_type.html">messageType</a> &gt; messageList, int pos=0)</td></tr>
-<tr class="memdesc:aa03a638654959525628872cb12b5d238"><td class="mdescLeft">&#160;</td><td class="mdescRight">read the logFile  <a href="#aa03a638654959525628872cb12b5d238"></a><br/></td></tr>
+<tr class="memdesc:aa03a638654959525628872cb12b5d238"><td class="mdescLeft">&#160;</td><td class="mdescRight">read the logFile, save a list of <a class="el" href="classmessage_type.html">messageType</a>, and change the logPos to the last position of log file  <a href="#aa03a638654959525628872cb12b5d238"></a><br/></td></tr>
 <tr class="memitem:ac1e124ef29fd9c7af7d2554ce6e8af7f"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#ac1e124ef29fd9c7af7d2554ce6e8af7f">readUberecorderFile</a> ()</td></tr>
+<tr class="memdesc:ac1e124ef29fd9c7af7d2554ce6e8af7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">read the uberecorder file, get the information about the server name  <a href="#ac1e124ef29fd9c7af7d2554ce6e8af7f"></a><br/></td></tr>
 <tr class="memitem:a3e6fc139f98af1b17b46af00b6d7bf6b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#a3e6fc139f98af1b17b46af00b6d7bf6b">removeFormat</a> (QString <a class="el" href="classfilecontrol.html#a01c0696ae36dd8c5e0a0b7c61e21e102">ipAdd</a>, QString channel, QString streamID, QString format)</td></tr>
+<tr class="memdesc:a3e6fc139f98af1b17b46af00b6d7bf6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">remove the format, if succeed, return 1, else return 0  <a href="#a3e6fc139f98af1b17b46af00b6d7bf6b"></a><br/></td></tr>
 <tr class="memitem:a829567b049887fd75dd7f7ec044f429b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#a829567b049887fd75dd7f7ec044f429b">removeStream</a> (QString <a class="el" href="classfilecontrol.html#a01c0696ae36dd8c5e0a0b7c61e21e102">ipAdd</a>, QString channel, QString streamID)</td></tr>
+<tr class="memdesc:a829567b049887fd75dd7f7ec044f429b"><td class="mdescLeft">&#160;</td><td class="mdescRight">remove the stream, if removed, return 1, else return 0  <a href="#a829567b049887fd75dd7f7ec044f429b"></a><br/></td></tr>
 <tr class="memitem:aa2e28a1d74fe282d1c9b7f3fc64a3156"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#aa2e28a1d74fe282d1c9b7f3fc64a3156">removeChannel</a> (QString <a class="el" href="classfilecontrol.html#a01c0696ae36dd8c5e0a0b7c61e21e102">ipAdd</a>, QString channel)</td></tr>
-<tr class="memitem:a202bf44e2059116e931246b9258ba95f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#a202bf44e2059116e931246b9258ba95f">writeVideoChannelFile</a> (QList&lt; <a class="el" href="classcardtype.html">cardtype</a> &gt;)</td></tr>
+<tr class="memdesc:aa2e28a1d74fe282d1c9b7f3fc64a3156"><td class="mdescLeft">&#160;</td><td class="mdescRight">remove the channel, if removed, return 1, else return 0  <a href="#aa2e28a1d74fe282d1c9b7f3fc64a3156"></a><br/></td></tr>
+<tr class="memitem:a53b4af7add490584b3069245aef9a0cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#a53b4af7add490584b3069245aef9a0cc">writeVideoChannelFile</a> (QList&lt; <a class="el" href="classcardtype.html">cardtype</a> &gt; cardTypeList)</td></tr>
+<tr class="memdesc:a53b4af7add490584b3069245aef9a0cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">write the video channel file, if succeed, return 1, else return 0  <a href="#a53b4af7add490584b3069245aef9a0cc"></a><br/></td></tr>
 <tr class="memitem:a965ab3a5181cd436fb24586da27f8600"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#a965ab3a5181cd436fb24586da27f8600">writeFormattoXML</a> (<a class="el" href="classserver_type.html">serverType</a> _server, <a class="el" href="classstreamtype.html">streamtype</a> _stream, <a class="el" href="classformat_type.html">formatType</a> _format)</td></tr>
+<tr class="memdesc:a965ab3a5181cd436fb24586da27f8600"><td class="mdescLeft">&#160;</td><td class="mdescRight">write the format to config.xml, if succeed, return 1, else return 0  <a href="#a965ab3a5181cd436fb24586da27f8600"></a><br/></td></tr>
 <tr class="memitem:a1c7fb690a004623b8b70399571edc302"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#a1c7fb690a004623b8b70399571edc302">streamEdittoXML</a> (<a class="el" href="classstreamtype.html">streamtype</a> preStream, <a class="el" href="classstreamtype.html">streamtype</a> currentStream)</td></tr>
+<tr class="memdesc:a1c7fb690a004623b8b70399571edc302"><td class="mdescLeft">&#160;</td><td class="mdescRight">change the stream option in config.xml, if succeed, return 1, else return 0  <a href="#a1c7fb690a004623b8b70399571edc302"></a><br/></td></tr>
 <tr class="memitem:a263fc9a46335ca4979d0af8f4cb5fb4c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#a263fc9a46335ca4979d0af8f4cb5fb4c">formatEdittoXML</a> (<a class="el" href="classstreamtype.html">streamtype</a> currentStream, <a class="el" href="classformat_type.html">formatType</a> preFormat, <a class="el" href="classformat_type.html">formatType</a> currentFormat)</td></tr>
+<tr class="memdesc:a263fc9a46335ca4979d0af8f4cb5fb4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">change the format option in config.xml, if succeed, return 1, else return 0  <a href="#a263fc9a46335ca4979d0af8f4cb5fb4c"></a><br/></td></tr>
 <tr class="memitem:a037793478a35d1f9b18f34753d5a0d32"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="classcardtype.html">cardtype</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#a037793478a35d1f9b18f34753d5a0d32">readVideoChannelFile</a> ()</td></tr>
+<tr class="memdesc:a037793478a35d1f9b18f34753d5a0d32"><td class="mdescLeft">&#160;</td><td class="mdescRight">read the video channel file, and return the as the list of cardtype  <a href="#a037793478a35d1f9b18f34753d5a0d32"></a><br/></td></tr>
 <tr class="memitem:a948bb397ca89b0129f69f83efafd52d1"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="classcardtype.html">cardtype</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#a948bb397ca89b0129f69f83efafd52d1">readVideoChannelFile</a> (QString <a class="el" href="classfilecontrol.html#a01c0696ae36dd8c5e0a0b7c61e21e102">ipAdd</a>)</td></tr>
+<tr class="memdesc:a948bb397ca89b0129f69f83efafd52d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">read the video channel file, and return the as the list of cardtype  <a href="#a948bb397ca89b0129f69f83efafd52d1"></a><br/></td></tr>
 <tr class="memitem:adbcb7ee1acab7fd64f89777f46432bb8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#adbcb7ee1acab7fd64f89777f46432bb8">setOrderFile</a> (int start)</td></tr>
+<tr class="memdesc:adbcb7ee1acab7fd64f89777f46432bb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the order.xml in the server, start or stop the server, return 1 succeed, else return 0  <a href="#adbcb7ee1acab7fd64f89777f46432bb8"></a><br/></td></tr>
 <tr class="memitem:a1307af5b24c8ca342ff5d41cc59ad869"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#a1307af5b24c8ca342ff5d41cc59ad869">setServerName</a> (QString <a class="el" href="classfilecontrol.html#a8dba37dc135537aaa646ea0512ff8a99">serverName</a>)</td></tr>
+<tr class="memdesc:a1307af5b24c8ca342ff5d41cc59ad869"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the server name in the uberecorder file, if succeed, return 1, else return 0  <a href="#a1307af5b24c8ca342ff5d41cc59ad869"></a><br/></td></tr>
 <tr class="memitem:afa5a5a10a91014feb9db672ba4ed8b5b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#afa5a5a10a91014feb9db672ba4ed8b5b">setProjectName</a> (QString <a class="el" href="classfilecontrol.html#a09e1b196b18ddcf5f9a5f0df706a1b45">projectName</a>)</td></tr>
+<tr class="memdesc:afa5a5a10a91014feb9db672ba4ed8b5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the project name, if succeed, return 1, else return 0  <a href="#afa5a5a10a91014feb9db672ba4ed8b5b"></a><br/></td></tr>
 <tr class="memitem:a20a2601c3e67646e2bbfa838f71beaf8"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#a20a2601c3e67646e2bbfa838f71beaf8">getVideoCard</a> (QList&lt; <a class="el" href="classcardtype.html">cardtype</a> &gt; cardList, int channel)</td></tr>
+<tr class="memdesc:a20a2601c3e67646e2bbfa838f71beaf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the video card name of the channel  <a href="#a20a2601c3e67646e2bbfa838f71beaf8"></a><br/></td></tr>
 <tr class="memitem:a1405490a2fb367c68ccc43954bc6eaca"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; QTime, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#a1405490a2fb367c68ccc43954bc6eaca">getCurrentTime</a> (QString stream, QString channel, QString resolution)</td></tr>
+<tr class="memdesc:a1405490a2fb367c68ccc43954bc6eaca"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the current time information from the status.xml, saved as a tuple, include current TC and split  <a href="#a1405490a2fb367c68ccc43954bc6eaca"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -145,7 +160,6 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a8dba37dc135537aaa646ea0512ff8a99"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#a8dba37dc135537aaa646ea0512ff8a99">serverName</a></td></tr>
 <tr class="memitem:ac6d1322b70e39ec2ff723bc14c26458b"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#ac6d1322b70e39ec2ff723bc14c26458b">serverID</a></td></tr>
 <tr class="memitem:a17c2d6968a5556fdfc2f0de5e30ade1e"><td class="memItemLeft" align="right" valign="top">qint64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#a17c2d6968a5556fdfc2f0de5e30ade1e">logPos</a></td></tr>
-<tr class="memdesc:a17c2d6968a5556fdfc2f0de5e30ade1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">logPos : the current read position of the dvs_sdi.log  <a href="#a17c2d6968a5556fdfc2f0de5e30ade1e"></a><br/></td></tr>
 </table>
 <a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>r/w the files in the server, get the information </p>
@@ -216,6 +230,16 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>change the format option in config.xml, if succeed, return 1, else return 0 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">currentStream</td><td>: the stream information </td></tr>
+    <tr><td class="paramname">preFormat</td><td>: the previous format information </td></tr>
+    <tr><td class="paramname">currentFormat</td><td>: the current format information </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="a1405490a2fb367c68ccc43954bc6eaca"></a>
@@ -247,6 +271,16 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>get the current time information from the status.xml, saved as a tuple, include current TC and split </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>: the stream of the capture </td></tr>
+    <tr><td class="paramname">channel</td><td>: the channel id </td></tr>
+    <tr><td class="paramname">resolution</td><td>: the resolution name of the format </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -290,6 +324,15 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>get the video card name of the channel </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cardList</td><td>: the list of cardtype </td></tr>
+    <tr><td class="paramname">channel</td><td>: the id of the channel </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -391,7 +434,15 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>read the logFile </p>
+<p>read the logFile, save a list of <a class="el" href="classmessage_type.html">messageType</a>, and change the logPos to the last position of log file </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ipAdd</td><td>: the ip address </td></tr>
+    <tr><td class="paramname">messageList</td><td>: the list of <a class="el" href="classmessage_type.html">messageType</a> </td></tr>
+    <tr><td class="paramname">pos</td><td>: the begin position of the reader </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -408,6 +459,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>read the uberecorder file, get the information about the server name </p>
+
 </div>
 </div>
 <a class="anchor" id="a037793478a35d1f9b18f34753d5a0d32"></a>
@@ -422,6 +475,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>read the video channel file, and return the as the list of cardtype </p>
 
 </div>
 </div>
@@ -438,6 +493,14 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>read the video channel file, and return the as the list of cardtype </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ipAdd</td><td>: ip address </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -464,6 +527,15 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>remove the channel, if removed, return 1, else return 0 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ipAdd</td><td>: ip address </td></tr>
+    <tr><td class="paramname">channel</td><td>: channel number </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -503,6 +575,17 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>remove the format, if succeed, return 1, else return 0 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ipAdd</td><td>: ip address </td></tr>
+    <tr><td class="paramname">channel</td><td>: channel number </td></tr>
+    <tr><td class="paramname">streamID</td><td>: stream id number </td></tr>
+    <tr><td class="paramname">format</td><td>: format name </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="a829567b049887fd75dd7f7ec044f429b"></a>
@@ -534,6 +617,16 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>remove the stream, if removed, return 1, else return 0 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ipAdd</td><td>: ip address </td></tr>
+    <tr><td class="paramname">channel</td><td>: channel number </td></tr>
+    <tr><td class="paramname">streamID</td><td>: stream id number </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -586,6 +679,14 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>set the order.xml in the server, start or stop the server, return 1 succeed, else return 0 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>: start / stop the capture, 1/0 </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="afa5a5a10a91014feb9db672ba4ed8b5b"></a>
@@ -602,6 +703,14 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>set the project name, if succeed, return 1, else return 0 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">projectName</td><td>: the name of the project </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="a1307af5b24c8ca342ff5d41cc59ad869"></a>
@@ -617,6 +726,14 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>set the server name in the uberecorder file, if succeed, return 1, else return 0 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">serverName</td><td>: the name of the server </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -643,6 +760,15 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>change the stream option in config.xml, if succeed, return 1, else return 0 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">preStream</td><td>: the previous stream information </td></tr>
+    <tr><td class="paramname">currentStream</td><td>: the current stream information </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -676,9 +802,19 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>write the format to config.xml, if succeed, return 1, else return 0 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_server</td><td>: the <a class="el" href="classserver_type.html">serverType</a> of the server </td></tr>
+    <tr><td class="paramname">_stream</td><td>: the streamtype of the stream </td></tr>
+    <tr><td class="paramname">_format</td><td>: the <a class="el" href="classformat_type.html">formatType</a> for the format </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a class="anchor" id="a202bf44e2059116e931246b9258ba95f"></a>
+<a class="anchor" id="a53b4af7add490584b3069245aef9a0cc"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -686,11 +822,19 @@ Public Attributes</h2></td></tr>
           <td class="memname">int filecontrol::writeVideoChannelFile </td>
           <td>(</td>
           <td class="paramtype">QList&lt; <a class="el" href="classcardtype.html">cardtype</a> &gt;&#160;</td>
-          <td class="paramname"><em>cardList</em></td><td>)</td>
+          <td class="paramname"><em>cardTypeList</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>write the video channel file, if succeed, return 1, else return 0 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cardType</td><td>: the list of cardtype </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -758,8 +902,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>logPos : the current read position of the dvs_sdi.log </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">logPos</td><td>: the current read position of the dvs_sdi.log </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -896,7 +1044,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 21 2014 18:10:09 for Video Capture 2 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 21 2014 19:11:13 for Video Capture 2 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
