@@ -92,18 +92,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
+<p>define the add dialog in GUI, for add the <a class="el" href="classformat_type.html" title="define the format type as config.xml">formatType</a> in <a class="el" href="classserver_type.html" title="define the server type">serverType</a>  
+ <a href="classadd_dialog.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="adddialog_8h_source.html">adddialog.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr class="memitem:a0dfd371232d7c912f3bddc2590710e31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadd_dialog.html#a0dfd371232d7c912f3bddc2590710e31">setServerListSlot</a> (QList&lt; <a class="el" href="classserver_type.html">serverType</a> &gt; <a class="el" href="classadd_dialog.html#a6a7a481c3f6e733de3fcb4d84aa27d84">serverList</a>)</td></tr>
+<tr class="memdesc:a0dfd371232d7c912f3bddc2590710e31"><td class="mdescLeft">&#160;</td><td class="mdescRight">the slot for insert the defined format into the serverList  <a href="#a0dfd371232d7c912f3bddc2590710e31"></a><br/></td></tr>
 <tr class="memitem:afdf2d43aaafe683835eaeeeac840580d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadd_dialog.html#afdf2d43aaafe683835eaeeeac840580d">setIPEditSlot</a> (int index)</td></tr>
+<tr class="memdesc:afdf2d43aaafe683835eaeeeac840580d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the slot for find the relative configuration of the server in serverList, and fill the editors  <a href="#afdf2d43aaafe683835eaeeeac840580d"></a><br/></td></tr>
 <tr class="memitem:a3fc19a96486d5ab6f106c539d3d2f7c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadd_dialog.html#a3fc19a96486d5ab6f106c539d3d2f7c6">setThumbSlot</a> (int)</td></tr>
+<tr class="memdesc:a3fc19a96486d5ab6f106c539d3d2f7c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the slot for changing the status of thumEdit  <a href="#a3fc19a96486d5ab6f106c539d3d2f7c6"></a><br/></td></tr>
 <tr class="memitem:a64313a5f49dd3c52703d180729e39f92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadd_dialog.html#a64313a5f49dd3c52703d180729e39f92">setLowResSlot</a> (int)</td></tr>
+<tr class="memdesc:a64313a5f49dd3c52703d180729e39f92"><td class="mdescLeft">&#160;</td><td class="mdescRight">the slot for changed the enable/disable status in <a class="el" href="classformat_type.html" title="define the format type as config.xml">formatType</a> with Hi/Low Res in user interface  <a href="#a64313a5f49dd3c52703d180729e39f92"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af85435fa5971400e512234dfa6a8b24d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadd_dialog.html#af85435fa5971400e512234dfa6a8b24d">addDialog</a> (QObject *parent=0)</td></tr>
+<tr class="memdesc:af85435fa5971400e512234dfa6a8b24d"><td class="mdescLeft">&#160;</td><td class="mdescRight">initial the <a class="el" href="classadd_dialog.html" title="define the add dialog in GUI, for add the formatType in serverType">addDialog</a>  <a href="#af85435fa5971400e512234dfa6a8b24d"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -132,7 +140,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a7d7a9b038d46d104b77798e7f3f8b567"><td class="memItemLeft" align="right" valign="top">QLineEdit *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadd_dialog.html#a7d7a9b038d46d104b77798e7f3f8b567">audioBitEdit</a></td></tr>
 <tr class="memitem:a6a7a481c3f6e733de3fcb4d84aa27d84"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="classserver_type.html">serverType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadd_dialog.html#a6a7a481c3f6e733de3fcb4d84aa27d84">serverList</a></td></tr>
 </table>
-<h2>Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>define the add dialog in GUI, for add the <a class="el" href="classformat_type.html" title="define the format type as config.xml">formatType</a> in <a class="el" href="classserver_type.html" title="define the server type">serverType</a> </p>
+</div><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="af85435fa5971400e512234dfa6a8b24d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -154,6 +164,8 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>initial the <a class="el" href="classadd_dialog.html" title="define the add dialog in GUI, for add the formatType in serverType">addDialog</a> </p>
 
 </div>
 </div>
@@ -180,6 +192,8 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>the slot for find the relative configuration of the server in serverList, and fill the editors </p>
+
 </div>
 </div>
 <a class="anchor" id="a64313a5f49dd3c52703d180729e39f92"></a>
@@ -203,6 +217,8 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>the slot for changed the enable/disable status in <a class="el" href="classformat_type.html" title="define the format type as config.xml">formatType</a> with Hi/Low Res in user interface </p>
 
 </div>
 </div>
@@ -228,6 +244,8 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>the slot for insert the defined format into the serverList </p>
+
 </div>
 </div>
 <a class="anchor" id="a3fc19a96486d5ab6f106c539d3d2f7c6"></a>
@@ -252,6 +270,8 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>the slot for changing the status of thumEdit </p>
+
 </div>
 </div>
 <h2>Member Data Documentation</h2>
@@ -264,6 +284,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">archivPathEdit</td><td>: interface for define the archiv_path </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -276,6 +302,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">archivResultEdit</td><td>: interface for define the archiv_result_path </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -288,6 +320,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">aspectEdit</td><td>: interface of the combo box for the aviliable aspect choices </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -300,6 +338,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">attrTable</td><td>: attribute table, a interface for the items input </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -312,6 +356,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">audioBitEdit</td><td>: interface for define the audio_bitrate </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -324,6 +374,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">audioEdit</td><td>: interface of the spin box for input the number of audio tracks, the value interval is between 0 - 8 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -336,6 +392,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cancelButton</td><td>: the button to cancel the input </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -348,6 +410,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channelEdit</td><td>: interface of the spin box for input the ID of channel, the value interval is between 0 - 16 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -360,6 +428,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">codecEdit</td><td>: interface of the combo box for resolution, includes "DNX120I_MXF_ATOM" &lt;&lt;"DNX185I_MXF_ATOM" &lt;&lt;"DV25_RAW" &lt;&lt;"DV25_MXF_ATOM" &lt;&lt;"DV25_MOV" &lt;&lt;"DV50_RAW" &lt;&lt;"DV50_MXF_ATOM" &lt;&lt;"DV50_MOV" &lt;&lt;"DV100_RAW" &lt;&lt;"DV100_MXF_ATOM" &lt;&lt;"DV100_MOV" &lt;&lt;"MJPEG21_MXF_ATOM" &lt;&lt;"MJPEG31_MXF_ATOM" &lt;&lt;"MJPEG101_MXF_ATOM" &lt;&lt;"MJPEG101M_MXF_ATOM" &lt;&lt;"MJPEG151S_MXF_ATOM" &lt;&lt;"MJPEG201_MXF_ATOM" &lt;&lt;"SD_MPEG4BP_AAC_MOV" &lt;&lt;"SD_MPEG4MP_AAC_MOV" </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -372,6 +446,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creatingpathEdit</td><td>: interface for define the creatingpath </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -384,6 +464,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dialog</td><td>: the dialog-interface for the <a class="el" href="classadd_dialog.html" title="define the add dialog in GUI, for add the formatType in serverType">addDialog</a> </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -396,6 +482,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fileNameEdit</td><td>: interface for define the defalut_filename </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -408,6 +500,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ipEdit</td><td>: interface of the combobox chooses the existed server </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -420,6 +518,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">okButton</td><td>: the button to accept the input </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -432,6 +536,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">projectNameEdit</td><td>: interface of the line edit shows the name of the project </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -444,6 +554,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scaleEdit</td><td>: interface for define the scale </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -456,6 +572,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">serverList</td><td>: the list of servers, include all the formatTypes, streamtypes, cardtypes in the server </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -468,6 +590,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">serverNameEdit</td><td>: interface of the line edit shows the name of the server </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -480,6 +608,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">splitEdit</td><td>: interface of the spin box for the split defineed, the value interval ist [0, 1440], 0 means the split is a day (1440 min) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -492,6 +626,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">streamEdit</td><td>: interface of the spin box for input the ID of the stream, the value interval is between 0 - 32 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -504,6 +644,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tapeNameEdit</td><td>: interface for define the default_tapename </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -516,6 +662,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">thumEdit</td><td>: interface of the checkbox for the thumbnail </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -528,6 +680,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">thumPPSEdit</td><td>: interface of the spin box for thumbnail_pic_per_sec, the value interval ist &gt; 0 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -540,6 +698,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">videoBitEdit</td><td>: interface for define the video_bitrate </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -550,7 +714,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jul 29 2014 14:25:02 for Video Capture 2 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jul 29 2014 16:46:39 for Video Capture 2 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
