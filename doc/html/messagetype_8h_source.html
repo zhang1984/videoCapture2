@@ -97,33 +97,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;QStringList&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;QDebug&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="code" href="classmessage_type.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmessage_type.html">messageType</a></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="comment">//Q_OBJECT</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classmessage_type.html#a87e40cc82919fe27f2f76fbe40cc054f">messageType</a>();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classmessage_type.html#a87e40cc82919fe27f2f76fbe40cc054f">messageType</a>(<span class="keywordtype">int</span> <a class="code" href="classmessage_type.html#aa0f137f4cc20c12136d189ba37176eba">datum</a>, QString <a class="code" href="classmessage_type.html#affb2f143febcaf95cce3a291ce990fd6">time</a>, QString <a class="code" href="classmessage_type.html#a9ecbd538ce021354ff593c4408ec5d1c">device</a>, QString <a class="code" href="classmessage_type.html#aeb58c7ac89aca665099adc58e8582ed5">message</a>, <span class="keywordtype">int</span> <a class="code" href="classmessage_type.html#a33dce358374397ff495b93941a7f8022">type</a>);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classmessage_type.html#a87e40cc82919fe27f2f76fbe40cc054f">messageType</a>(QString line);</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="classmessage_type.html#aa0f137f4cc20c12136d189ba37176eba">   17</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classmessage_type.html#aa0f137f4cc20c12136d189ba37176eba">datum</a>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="classmessage_type.html#affb2f143febcaf95cce3a291ce990fd6">   18</a></span>&#160;    QString <a class="code" href="classmessage_type.html#affb2f143febcaf95cce3a291ce990fd6">time</a>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="classmessage_type.html#aeb58c7ac89aca665099adc58e8582ed5">   19</a></span>&#160;    QString <a class="code" href="classmessage_type.html#aeb58c7ac89aca665099adc58e8582ed5">message</a>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="classmessage_type.html#a9ecbd538ce021354ff593c4408ec5d1c">   20</a></span>&#160;    QString <a class="code" href="classmessage_type.html#a9ecbd538ce021354ff593c4408ec5d1c">device</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="classmessage_type.html#a33dce358374397ff495b93941a7f8022">   22</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classmessage_type.html#a33dce358374397ff495b93941a7f8022">type</a>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classmessage_type.html#a45f15df078d0a06f39f34528f0b6a778">getMessageType</a>(QString message);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">//signals:</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">//public slots:</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif // MESSAGETYPE_H</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="code" href="classmessage_type.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmessage_type.html" title="define the message type from a line in dvs_sdi.log file">messageType</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="comment">//Q_OBJECT</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classmessage_type.html#a87e40cc82919fe27f2f76fbe40cc054f" title="initial the messageType">messageType</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classmessage_type.html#a87e40cc82919fe27f2f76fbe40cc054f" title="initial the messageType">messageType</a>(<span class="keywordtype">int</span> <a class="code" href="classmessage_type.html#aa0f137f4cc20c12136d189ba37176eba">datum</a>, QString <a class="code" href="classmessage_type.html#affb2f143febcaf95cce3a291ce990fd6">time</a>, QString <a class="code" href="classmessage_type.html#a9ecbd538ce021354ff593c4408ec5d1c">device</a>, QString <a class="code" href="classmessage_type.html#aeb58c7ac89aca665099adc58e8582ed5">message</a>, <span class="keywordtype">int</span> <a class="code" href="classmessage_type.html#a33dce358374397ff495b93941a7f8022">type</a>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classmessage_type.html#a87e40cc82919fe27f2f76fbe40cc054f" title="initial the messageType">messageType</a>(QString line);</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="classmessage_type.html#aa0f137f4cc20c12136d189ba37176eba">   32</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classmessage_type.html#aa0f137f4cc20c12136d189ba37176eba">datum</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="classmessage_type.html#affb2f143febcaf95cce3a291ce990fd6">   37</a></span>&#160;    QString <a class="code" href="classmessage_type.html#affb2f143febcaf95cce3a291ce990fd6">time</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="classmessage_type.html#aeb58c7ac89aca665099adc58e8582ed5">   42</a></span>&#160;    QString <a class="code" href="classmessage_type.html#aeb58c7ac89aca665099adc58e8582ed5">message</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="classmessage_type.html#a9ecbd538ce021354ff593c4408ec5d1c">   47</a></span>&#160;    QString <a class="code" href="classmessage_type.html#a9ecbd538ce021354ff593c4408ec5d1c">device</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="classmessage_type.html#a33dce358374397ff495b93941a7f8022">   52</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classmessage_type.html#a33dce358374397ff495b93941a7f8022">type</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classmessage_type.html#a45f15df078d0a06f39f34528f0b6a778" title="hand out the message type from the message">getMessageType</a>(QString message);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">//signals:</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">//public slots:</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif // MESSAGETYPE_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jul 29 2014 13:43:13 for Video Capture 2 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jul 29 2014 14:25:02 for Video Capture 2 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

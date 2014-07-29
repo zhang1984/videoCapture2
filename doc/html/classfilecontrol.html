@@ -111,11 +111,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a53be97882f98c4d79fa2f36f65bba874"><td class="memItemLeft" align="right" valign="top">QList&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#a53be97882f98c4d79fa2f36f65bba874">isServer</a> ()</td></tr>
 <tr class="memdesc:a53be97882f98c4d79fa2f36f65bba874"><td class="mdescLeft">&#160;</td><td class="mdescRight">test, whether all the necessary files are existed in the server  <a href="#a53be97882f98c4d79fa2f36f65bba874"></a><br/></td></tr>
 <tr class="memitem:a7c8d65460bc34a9ad9dee07c9c36d1cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classserver_type.html">serverType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#a7c8d65460bc34a9ad9dee07c9c36d1cd">readConfigFile</a> ()</td></tr>
-<tr class="memdesc:a7c8d65460bc34a9ad9dee07c9c36d1cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">read the config file, return the <a class="el" href="classserver_type.html">serverType</a>  <a href="#a7c8d65460bc34a9ad9dee07c9c36d1cd"></a><br/></td></tr>
+<tr class="memdesc:a7c8d65460bc34a9ad9dee07c9c36d1cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">read the config file, return the <a class="el" href="classserver_type.html" title="define the server type">serverType</a>  <a href="#a7c8d65460bc34a9ad9dee07c9c36d1cd"></a><br/></td></tr>
 <tr class="memitem:ab0ec95cd198d80ff24edb7be117dfff8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#ab0ec95cd198d80ff24edb7be117dfff8">getStatus</a> ()</td></tr>
 <tr class="memdesc:ab0ec95cd198d80ff24edb7be117dfff8"><td class="mdescLeft">&#160;</td><td class="mdescRight">read the status file, return whether the capture is started (1) or stopped (0)  <a href="#ab0ec95cd198d80ff24edb7be117dfff8"></a><br/></td></tr>
 <tr class="memitem:aa03a638654959525628872cb12b5d238"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="classmessage_type.html">messageType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#aa03a638654959525628872cb12b5d238">readLogFile</a> (QString <a class="el" href="classfilecontrol.html#a01c0696ae36dd8c5e0a0b7c61e21e102">ipAdd</a>, QList&lt; <a class="el" href="classmessage_type.html">messageType</a> &gt; messageList, int pos=0)</td></tr>
-<tr class="memdesc:aa03a638654959525628872cb12b5d238"><td class="mdescLeft">&#160;</td><td class="mdescRight">read the logFile, save a list of <a class="el" href="classmessage_type.html">messageType</a>, and change the logPos to the last position of log file  <a href="#aa03a638654959525628872cb12b5d238"></a><br/></td></tr>
+<tr class="memdesc:aa03a638654959525628872cb12b5d238"><td class="mdescLeft">&#160;</td><td class="mdescRight">read the logFile, save a list of <a class="el" href="classmessage_type.html" title="define the message type from a line in dvs_sdi.log file">messageType</a>, and change the logPos to the last position of log file  <a href="#aa03a638654959525628872cb12b5d238"></a><br/></td></tr>
 <tr class="memitem:ac1e124ef29fd9c7af7d2554ce6e8af7f"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#ac1e124ef29fd9c7af7d2554ce6e8af7f">readUberecorderFile</a> ()</td></tr>
 <tr class="memdesc:ac1e124ef29fd9c7af7d2554ce6e8af7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">read the uberecorder file, get the information about the server name  <a href="#ac1e124ef29fd9c7af7d2554ce6e8af7f"></a><br/></td></tr>
 <tr class="memitem:a3e6fc139f98af1b17b46af00b6d7bf6b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfilecontrol.html#a3e6fc139f98af1b17b46af00b6d7bf6b">removeFormat</a> (QString <a class="el" href="classfilecontrol.html#a01c0696ae36dd8c5e0a0b7c61e21e102">ipAdd</a>, QString channel, QString streamID, QString format)</td></tr>
@@ -400,7 +400,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>read the config file, return the <a class="el" href="classserver_type.html">serverType</a> </p>
+<p>read the config file, return the <a class="el" href="classserver_type.html" title="define the server type">serverType</a> </p>
 
 </div>
 </div>
@@ -434,11 +434,11 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>read the logFile, save a list of <a class="el" href="classmessage_type.html">messageType</a>, and change the logPos to the last position of log file </p>
+<p>read the logFile, save a list of <a class="el" href="classmessage_type.html" title="define the message type from a line in dvs_sdi.log file">messageType</a>, and change the logPos to the last position of log file </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ipAdd</td><td>: the ip address </td></tr>
-    <tr><td class="paramname">messageList</td><td>: the list of <a class="el" href="classmessage_type.html">messageType</a> </td></tr>
+    <tr><td class="paramname">messageList</td><td>: the list of <a class="el" href="classmessage_type.html" title="define the message type from a line in dvs_sdi.log file">messageType</a> </td></tr>
     <tr><td class="paramname">pos</td><td>: the begin position of the reader </td></tr>
   </table>
   </dd>
@@ -805,7 +805,7 @@ Public Attributes</h2></td></tr>
 <p>write the format to config.xml, if succeed, return 1, else return 0 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_server</td><td>: the <a class="el" href="classserver_type.html">serverType</a> of the server </td></tr>
+    <tr><td class="paramname">_server</td><td>: the <a class="el" href="classserver_type.html" title="define the server type">serverType</a> of the server </td></tr>
     <tr><td class="paramname">_stream</td><td>: the streamtype of the stream </td></tr>
     <tr><td class="paramname">_format</td><td>: the <a class="el" href="classformat_type.html" title="define the format type as config.xml">formatType</a> for the format </td></tr>
   </table>
@@ -1044,7 +1044,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jul 29 2014 13:43:13 for Video Capture 2 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jul 29 2014 14:25:02 for Video Capture 2 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
