@@ -68,7 +68,7 @@ public:
     */
     void setTable(QList<messageType> messageList, int type);
     /**
-    \brief clean all the message in the table
+    \brief clean all the message daten in the table
     */
     void cleanTable();
 signals:

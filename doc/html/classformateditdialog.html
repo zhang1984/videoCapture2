@@ -92,18 +92,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
+<p>the class defines a format edit dialog, for a specific format editting  
+ <a href="classformateditdialog.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="formateditdialog_8h_source.html">formateditdialog.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr class="memitem:af63517bc3a2256eeb475049ce359a98e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classformateditdialog.html#af63517bc3a2256eeb475049ce359a98e">hiResSlot</a> (int)</td></tr>
+<tr class="memdesc:af63517bc3a2256eeb475049ce359a98e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the slot for codecEdit, set the scaleEdit, videoBitEdit und audioBitEdit disable  <a href="#af63517bc3a2256eeb475049ce359a98e"></a><br/></td></tr>
 <tr class="memitem:af98a846071c51101932f61a4f2ea252c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classformateditdialog.html#af98a846071c51101932f61a4f2ea252c">setOKButtonEnable</a> ()</td></tr>
+<tr class="memdesc:af98a846071c51101932f61a4f2ea252c"><td class="mdescLeft">&#160;</td><td class="mdescRight">the slot for okButton, if the edits changed, set the button enable  <a href="#af98a846071c51101932f61a4f2ea252c"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a46be8d4ff54432006e8318be748704c5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classformateditdialog.html#a46be8d4ff54432006e8318be748704c5">formateditdialog</a> (QString <a class="el" href="classformateditdialog.html#af958788da6ce429b94cbd4776bf96971">ipAdd</a>, QString <a class="el" href="classformateditdialog.html#a24fc4481ad4e84abbb3640e10b6a32ca">streamID</a>, QString <a class="el" href="classformateditdialog.html#a5f56560bb1d83d611295b98e1e2b3d6a">format</a>, QWidget *parent=0)</td></tr>
+<tr class="memdesc:a46be8d4ff54432006e8318be748704c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">initial a format edit dialog with the parameters  <a href="#a46be8d4ff54432006e8318be748704c5"></a><br/></td></tr>
 <tr class="memitem:ad5c9a679be8fd9760dd0f70963fba8be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classformateditdialog.html#ad5c9a679be8fd9760dd0f70963fba8be">createTable</a> ()</td></tr>
+<tr class="memdesc:ad5c9a679be8fd9760dd0f70963fba8be"><td class="mdescLeft">&#160;</td><td class="mdescRight">creating the table layout, initial the GUI-Object in initial phase  <a href="#ad5c9a679be8fd9760dd0f70963fba8be"></a><br/></td></tr>
 <tr class="memitem:a90b78960b5da834d6cb547c92416b987"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classformateditdialog.html#a90b78960b5da834d6cb547c92416b987">setFormat2Table</a> (<a class="el" href="classformat_type.html">formatType</a> _format)</td></tr>
+<tr class="memdesc:a90b78960b5da834d6cb547c92416b987"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the format to the table, the configuration data are automatic filled in  <a href="#a90b78960b5da834d6cb547c92416b987"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -125,7 +133,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:afb45137e2e35a84a7bc091dd99f9c5ae"><td class="memItemLeft" align="right" valign="top">QLineEdit *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classformateditdialog.html#afb45137e2e35a84a7bc091dd99f9c5ae">audioBitEdit</a></td></tr>
 <tr class="memitem:acca68f2cb7b0f730fa7e3f3a6a7b4979"><td class="memItemLeft" align="right" valign="top">QSpinBox *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classformateditdialog.html#acca68f2cb7b0f730fa7e3f3a6a7b4979">timeoverlayEdit</a></td></tr>
 </table>
-<h2>Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>the class defines a format edit dialog, for a specific format editting </p>
+</div><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a46be8d4ff54432006e8318be748704c5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -170,6 +180,8 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>initial a format edit dialog with the parameters </p>
+
 </div>
 </div>
 <h2>Member Function Documentation</h2>
@@ -185,6 +197,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>creating the table layout, initial the GUI-Object in initial phase </p>
 
 </div>
 </div>
@@ -210,6 +224,8 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>the slot for codecEdit, set the scaleEdit, videoBitEdit und audioBitEdit disable </p>
+
 </div>
 </div>
 <a class="anchor" id="a90b78960b5da834d6cb547c92416b987"></a>
@@ -225,6 +241,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>set the format to the table, the configuration data are automatic filled in </p>
 
 </div>
 </div>
@@ -249,6 +267,8 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>the slot for okButton, if the edits changed, set the button enable </p>
+
 </div>
 </div>
 <h2>Member Data Documentation</h2>
@@ -261,6 +281,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">archivPathEdit</td><td>: the line edit ojbect for editting the archiv_path </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -273,6 +299,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">archivResultEdit</td><td>: the line edit ojbect for editting the archiv_result_path </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -285,6 +317,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">audioBitEdit</td><td>: the line edit object for editting the audio_bitrate </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -297,6 +335,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cancelButton</td><td>: Button object to close the dialog without the format change </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -309,6 +353,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">codecEdit</td><td>: the combo box ojbect for choosing the resolution of the format </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -321,6 +371,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creatingpathEdit</td><td>: the line edit object for editting the creating_path </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -333,6 +389,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dialog</td><td>: the dialog widget supplies a window to pop-out </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -345,6 +407,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tapeNameEdit</td><td>: the line edit ojbect for editting the default_filename </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -357,6 +425,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td>: the name of the format, usually use the resolution name instead </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -369,6 +443,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ipAdd</td><td>: ip addresse or the server name </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -381,6 +461,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">okButton</td><td>: Button object to close the dialog, and accept the format change </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -393,6 +479,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scaleEdit</td><td>: the line edit ojbect for editting the scale </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -405,6 +497,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">streamID</td><td>: the ID of the stream </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -417,6 +515,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">table</td><td>: the table widget to layout the components in GUI </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -429,6 +533,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tapeNameEdit</td><td>: the line edit ojbect for editting the default_tapename </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -441,6 +551,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeoverlayEdit</td><td>: the line edit object for editting the timeoverlay </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -453,6 +569,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">videoBitEdit</td><td>: the line edit object for editting the video_bitrate </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -463,7 +585,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jul 29 2014 16:46:39 for Video Capture 2 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 30 2014 10:17:11 for Video Capture 2 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
