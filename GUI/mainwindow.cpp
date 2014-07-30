@@ -312,7 +312,7 @@ void MainWindow::serverEditActSlot()
 #ifdef _WIN32_
         if(treeWidget->tWidget->currentItem()->text(0).split(".") == 4)
 #elif __linux__
-        if(treeWidget->tWidget->currentItem()->text(0) == "Local")
+        if(treeWidget->tWidget->currentItem()->text(0) == "Local" || treeWidget->tWidget->currentItem()->text(0) == "local")
 #endif
         {
             ipAdd = treeWidget->tWidget->currentItem()->text(0);
