@@ -103,36 +103,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cardtype_8h.html">config/cardtype.h</a>&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;QDebug&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="classserver_edit_dialog.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="classserver_edit_dialog.html">serverEditDialog</a> : <span class="keyword">public</span> QWidget</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    Q_OBJECT</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classserver_edit_dialog.html#af7b3d8458869ddec3f03438b7e11f6bb">serverEditDialog</a>(QString <a class="code" href="classserver_edit_dialog.html#a615ce8f18f24cb2c2fb16253bcb590a3">ipAdd</a>, QWidget *parent = 0);</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="classserver_edit_dialog.html#a2e93a403f611372f26ae2ef5f7571876">   21</a></span>&#160;    QDialog* <a class="code" href="classserver_edit_dialog.html#a2e93a403f611372f26ae2ef5f7571876">dialog</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="classserver_edit_dialog.html#a615ce8f18f24cb2c2fb16253bcb590a3">   22</a></span>&#160;    QString <a class="code" href="classserver_edit_dialog.html#a615ce8f18f24cb2c2fb16253bcb590a3">ipAdd</a>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="code" href="classserver_edit_dialog.html#af8cee0ff47bf105c07fe239b1cf5ec75">   23</a></span>&#160;    QLineEdit* <a class="code" href="classserver_edit_dialog.html#af8cee0ff47bf105c07fe239b1cf5ec75">projectNameEdit</a>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="classserver_edit_dialog.html#a5864146d9e035d70d9128f4c0c42ab55">   24</a></span>&#160;    QLineEdit* <a class="code" href="classserver_edit_dialog.html#a5864146d9e035d70d9128f4c0c42ab55">serverNameEdit</a>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="classserver_edit_dialog.html#ae341271d31b1f178f999c2e7a3128201">   25</a></span>&#160;    QTableWidget* <a class="code" href="classserver_edit_dialog.html#ae341271d31b1f178f999c2e7a3128201">videoCardTable</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classserver_edit_dialog.html#ad161905fceacf637716f6daf4214a053">   26</a></span>&#160;    QPushButton* <a class="code" href="classserver_edit_dialog.html#ad161905fceacf637716f6daf4214a053">okButton</a>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classserver_edit_dialog.html#a93fce91e09e03561108188af7d4e2eeb">   27</a></span>&#160;    QPushButton* <a class="code" href="classserver_edit_dialog.html#a93fce91e09e03561108188af7d4e2eeb">cancelButton</a>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    QList&lt;cardtype&gt; <a class="code" href="classserver_edit_dialog.html#a9a3c9038106245580135e5d1bc86af45">table2CardList</a>();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classserver_edit_dialog.html#a2a9b3efe1c87e5c0bd76420af195138e">createTable</a>();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;signals:</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span> slots:</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classserver_edit_dialog.html#a22102422b77bb7bba7b27490b98cb10f">setOKButtonEnable</a>();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif // SERVEREDITDIALOG_H</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="classserver_edit_dialog.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="classserver_edit_dialog.html" title="the class defines a server edit dialog, set the parameters of the server, like the name of the server...">serverEditDialog</a> : <span class="keyword">public</span> QWidget</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classserver_edit_dialog.html#af7b3d8458869ddec3f03438b7e11f6bb" title="initial the class">serverEditDialog</a>(QString <a class="code" href="classserver_edit_dialog.html#a615ce8f18f24cb2c2fb16253bcb590a3">ipAdd</a>, QWidget *parent = 0);</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="classserver_edit_dialog.html#a2e93a403f611372f26ae2ef5f7571876">   31</a></span>&#160;    QDialog* <a class="code" href="classserver_edit_dialog.html#a2e93a403f611372f26ae2ef5f7571876">dialog</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="classserver_edit_dialog.html#a615ce8f18f24cb2c2fb16253bcb590a3">   36</a></span>&#160;    QString <a class="code" href="classserver_edit_dialog.html#a615ce8f18f24cb2c2fb16253bcb590a3">ipAdd</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classserver_edit_dialog.html#af8cee0ff47bf105c07fe239b1cf5ec75">   41</a></span>&#160;    QLineEdit* <a class="code" href="classserver_edit_dialog.html#af8cee0ff47bf105c07fe239b1cf5ec75">projectNameEdit</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="classserver_edit_dialog.html#a5864146d9e035d70d9128f4c0c42ab55">   46</a></span>&#160;    QLineEdit* <a class="code" href="classserver_edit_dialog.html#a5864146d9e035d70d9128f4c0c42ab55">serverNameEdit</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="classserver_edit_dialog.html#ae341271d31b1f178f999c2e7a3128201">   51</a></span>&#160;    QTableWidget* <a class="code" href="classserver_edit_dialog.html#ae341271d31b1f178f999c2e7a3128201">videoCardTable</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="classserver_edit_dialog.html#ad161905fceacf637716f6daf4214a053">   56</a></span>&#160;    QPushButton* <a class="code" href="classserver_edit_dialog.html#ad161905fceacf637716f6daf4214a053">okButton</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="classserver_edit_dialog.html#a93fce91e09e03561108188af7d4e2eeb">   61</a></span>&#160;    QPushButton* <a class="code" href="classserver_edit_dialog.html#a93fce91e09e03561108188af7d4e2eeb">cancelButton</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    QList&lt;cardtype&gt; <a class="code" href="classserver_edit_dialog.html#a9a3c9038106245580135e5d1bc86af45" title="set predefined video card information in the table">table2CardList</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classserver_edit_dialog.html#a2a9b3efe1c87e5c0bd76420af195138e" title="create the table component in initial phase">createTable</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;signals:</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classserver_edit_dialog.html#a22102422b77bb7bba7b27490b98cb10f" title="change the okButton status, if the configuration data changed">setOKButtonEnable</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;};</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif // SERVEREDITDIALOG_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 30 2014 10:17:10 for Video Capture 2 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 30 2014 14:32:16 for Video Capture 2 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
