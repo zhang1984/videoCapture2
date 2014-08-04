@@ -68,8 +68,8 @@ int messageUpdate::updateElements()
                     {
                         if(messageList.at(j).device.contains("chan"))
                         {
-                            qDebug()<<messageList.at(j).message;
-                            qDebug()<<messageList.at(j).device;
+                            //qDebug()<<messageList.at(j).message;
+                            //qDebug()<<messageList.at(j).device;
                             int index = messageList.at(j).device.split(" ").at(1).toInt();
                             QString cardname = _control.getVideoCard(cardList, index);
                             int cardIndex = -1;
